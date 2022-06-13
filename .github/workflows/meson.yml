@@ -15,7 +15,7 @@ jobs:
       - name: install libraries
         run: sudo apt-get install libjson-c-dev
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - uses: BSFishy/meson-build@v1.0.3
         with:
           setup-options: --werror
@@ -34,7 +34,7 @@ jobs:
       - name: install libraries
         run: sudo apt-get install -y libpam-dev libcap-ng-dev
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - uses: BSFishy/meson-build@v1.0.3
         with:
           setup-options: --werror --wrap-mode=forcefallback
@@ -54,7 +54,7 @@ jobs:
       - name: install libraries
         run: sudo apt-get install -y libpam-dev libcap-ng-dev
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - uses: BSFishy/meson-build@v1.0.3
         with:
           setup-options: --werror --wrap-mode=forcefallback --default-library=static
@@ -74,7 +74,7 @@ jobs:
       - name: install libraries
         run: sudo apt-get install libjson-c-dev lcov
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - uses: BSFishy/meson-build@v1.0.3
         with:
           setup-options: -Db_coverage=true --werror
