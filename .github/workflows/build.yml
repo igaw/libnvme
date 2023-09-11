@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install gcc pkg-config libjson-c-dev libssl-dev python3-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -48,7 +48,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install gcc pkg-config libjson-c-dev libdbus-1-dev python3-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -81,7 +81,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install clang pkg-config libjson-c-dev libdbus-1-dev python3-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -115,7 +115,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install libpam-dev libcap-ng-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -149,7 +149,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install libpam-dev libcap-ng-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -185,7 +185,7 @@ jobs:
     steps:
       - name: install libraries
         run: sudo apt-get install libpam-dev libcap-ng-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -234,7 +234,7 @@ jobs:
         run: sudo apt install gcc-arm-linux-gnueabihf pkg-config qemu-user-static
       - name: install libraries
         run: sudo apt install libjson-c-dev:armhf
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: BSFishy/meson-build@v1.0.3
         name: build
         with:
@@ -277,7 +277,7 @@ jobs:
         run: sudo apt install gcc-powerpc64le-linux-gnu pkg-config qemu-user-static
       - name: install libraries
         run: sudo apt install libjson-c-dev:ppc64el
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: BSFishy/meson-build@v1.0.3
         name: build
         with:
@@ -320,7 +320,7 @@ jobs:
         run: sudo apt install gcc-s390x-linux-gnu pkg-config qemu-user-static
       - name: install libraries
         run: sudo apt install libjson-c-dev:s390x
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: BSFishy/meson-build@v1.0.3
         name: build
         with:
@@ -349,7 +349,7 @@ jobs:
     name: muon minimal
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: build muon and samurai build-tool
         run: |
           mkdir build-tools
