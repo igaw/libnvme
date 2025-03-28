@@ -11,10 +11,6 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
   build_sdist:
     name: Build source distribution
@@ -38,12 +34,20 @@ jobs:
   upload_test_pypi:
     needs: [build_sdist]
     runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/libnvme-test
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
     steps:
       - name: Install Python (if missing)
-        run: apt-get update && apt-get install -y python3 python3-pip
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip
 
       - name: Update python dependencies
-        run: python3 -m pip install -U packaging --break-system-packages
+        run: |
+          sudo python3 -m pip install packaging --break-system-packages
 
       - uses: actions/download-artifact@v4
         with:
@@ -58,6 +62,11 @@ jobs:
   upload_pypi:
     needs: [build_sdist]
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
+    environment:
+      name: pypi
+      url: https://pypi.org/p/libvnme-release  # Replace <package-name> with your PyPI project name
     if: startsWith(github.ref, 'refs/tags/v') && github.repository == 'linux-nvme/libnvme'
     steps:
       - name: Install Python (if missing)
