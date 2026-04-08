@@ -423,6 +423,32 @@ int nvme_get_log(struct nvme_get_log_args *args)
 		.timeout_ms	= args->timeout,
 	};
 
+	printf("nvme_passthru_cmd {\n"
+	       "  opcode      = 0x%02x\n"
+	       "  flags       = 0x%02x\n"
+	       "  rsvd1       = 0x%02x\n"
+	       "  nsid        = 0x%08x\n"
+	       "  cdw2        = 0x%08x\n"
+	       "  cdw3        = 0x%08x\n"
+	       "  metadata    = 0x%llx\n"
+	       "  addr        = 0x%llx\n"
+	       "  metadata_len= 0x%u\n"
+	       "  data_len    = 0x%u\n"
+	       "  cdw10       = 0x%08x\n"
+	       "  cdw11       = 0x%08x\n"
+	       "  cdw12       = 0x%08x\n"
+	       "  cdw13       = 0x%08x\n"
+	       "  cdw14       = 0x%08x\n"
+	       "  cdw15       = 0x%08x\n"
+	       "  timeout_ms  = 0x%u\n"
+	       "  result      = 0x%llx\n"
+	       "}\n",
+	       cmd.opcode, cmd.flags, cmd.rsvd1, cmd.nsid, cmd.cdw2, cmd.cdw3,
+	       (unsigned long long)cmd.metadata, (unsigned long long)cmd.addr,
+	       cmd.metadata_len, cmd.data_len, cmd.cdw10, cmd.cdw11, cmd.cdw12,
+	       cmd.cdw13, cmd.cdw14, cmd.cdw15, cmd.timeout_ms,
+	       (unsigned long long)cmd.result);
+
 	if (args->args_size < sizeof(struct nvme_get_log_args)) {
 		errno = EINVAL;
 		return -1;
